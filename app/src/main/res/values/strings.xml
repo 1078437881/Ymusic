@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Ymusic</string>
+    <string name="slide_fragment">Hello slide_fragment</string>
+    <string name="main_fragment">Hello main_fragment</string>
+    main_fragment
 </resources>

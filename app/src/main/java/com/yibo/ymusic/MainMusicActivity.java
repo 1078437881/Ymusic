@@ -1,8 +1,12 @@
 package com.yibo.ymusic;
 
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
+
+import com.yibo.ymusic.fragment.MainFragment;
+import com.yibo.ymusic.fragment.SlideFragment;
 
 public class MainMusicActivity extends AppCompatActivity {
 
@@ -11,14 +15,25 @@ public class MainMusicActivity extends AppCompatActivity {
         System.loadLibrary("native-lib");
     }
 
+    private SlideFragment slideFragment = null;
+    private MainFragment mainFragment = null;
+    private View slideView = null;
+    public static DrawerLayout  mainDrawerLayout = null;
+    public static MainMusicActivity mContext = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_music);
+        mContext = this;
+        slideView = findViewById(R.id.slide_frame);
+        mainDrawerLayout = findViewById(R.id.main_drawer);
+        slideFragment = new SlideFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.slide_frame,slideFragment).commit();
+        mainFragment = new MainFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,mainFragment).commit();
 
-        // Example of a call to a native method
-        TextView tv = (TextView) findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());
+
     }
 
     /**
