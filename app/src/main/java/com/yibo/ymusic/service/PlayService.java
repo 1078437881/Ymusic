@@ -3,6 +3,7 @@ package com.yibo.ymusic.service;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -16,7 +17,9 @@ import android.os.PowerManager;
 import android.support.annotation.Nullable;
 import android.widget.RemoteViews;
 
-import java.util.concurrent.Executor;
+import com.yibo.ymusic.utils.MusicUtils;
+import com.yibo.ymusic.utils.MyLog;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -48,11 +51,7 @@ public class PlayService extends Service implements MediaPlayer.OnCompletionList
         }
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
 
-    }
 
     @Nullable
     @Override
@@ -63,8 +62,22 @@ public class PlayService extends Service implements MediaPlayer.OnCompletionList
     }
 
     @Override
-    public void onCompletion(MediaPlayer mp) {
+    public void onCreate() {
+        super.onCreate();
+        acquireWakeLock();//获取设备电源锁
+        sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
 
+        MusicUtils.intitMusicList();
+//        playingPisition =
+    }
+
+    /**
+     * 播放完毕自动下一曲
+     * @param mp
+     */
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        next();
     }
 
 
@@ -94,8 +107,40 @@ public class PlayService extends Service implements MediaPlayer.OnCompletionList
         }
     };
 
-    private void next(){
+    /**
+     * 下一曲
+     * @return 当前播放位置
+     */
+    private int next(){
 
+        return 1;
+    }
+
+    /**
+     * 申请设备电源锁
+     */
+    private void acquireWakeLock(){
+        MyLog.d(TAG,"正在申请电源锁");
+        if(null==wakeLock){
+            PowerManager pm = (PowerManager) this.getSystemService(Context.POWER_SERVICE);
+            wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK|PowerManager.ON_AFTER_RELEASE,"");
+            if(wakeLock!=null){
+                wakeLock.acquire();
+                MyLog.d(TAG,"电源申请成功");
+            }
+        }
+    }
+
+    /**
+     * 释放设备电源锁
+     */
+    private void releaseWakeLock(){
+        MyLog.d(TAG,"正在释放电源锁");
+        if(null!=wakeLock){
+            wakeLock.release();
+            wakeLock=null;
+            MyLog.d(TAG,"电源释放成功");
+        }
     }
     /**
      * 音乐播放回调接口

@@ -12,4 +12,6 @@ public class PlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
     }
+
+    public native String baseCall(int x,String y);
 }
