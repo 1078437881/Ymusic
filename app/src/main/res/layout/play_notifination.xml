@@ -7,19 +7,19 @@
 
     <ImageView
         android:id="@+id/nf_picture"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_vertical"
         app:srcCompat="@mipmap/ic_launcher_round" />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_vertical">
         <TextView
             android:id="@+id/nf_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="25dp"
             android:textSize="15dp"
             android:text="歌名"
@@ -28,7 +28,7 @@
             android:id="@+id/nf_artist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="35dp"
             android:layout_marginLeft="25dp"
             android:textSize="10dp"
             android:text="歌手"
@@ -43,22 +43,14 @@
             android:layout_marginEnd="5dp"
             app:srcCompat="@android:drawable/ic_delete" />
 
-        <TextView
-            android:id="@+id/dividers"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="49dp"
-            android:layout_centerHorizontal="true"
-            android:background="@color/black"/>
 
         <ImageView
             android:id="@+id/nf_previous"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/nf_play"
             app:srcCompat="@android:drawable/ic_media_previous" />
 
         <ImageView
@@ -66,18 +58,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
             app:srcCompat="@android:drawable/ic_media_pause" />
 
         <ImageView
             android:id="@+id/nf_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/nf_play"
+            android:layout_centerVertical="true"
             app:srcCompat="@android:drawable/ic_media_next" />
     </RelativeLayout>
 </LinearLayout>

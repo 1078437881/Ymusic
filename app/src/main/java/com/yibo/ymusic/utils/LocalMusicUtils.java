@@ -49,7 +49,7 @@ public class LocalMusicUtils {
         Cursor cursor = MusicApp.aCOntext.getContentResolver().query(
                 MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
                 null,
-                MediaStore.Audio.Media.DATA + "like ?",
+                MediaStore.Audio.Media.DATA + " like ?",
                 new String[]{dirName + "%"},
                 MediaStore.Audio.Media.DEFAULT_SORT_ORDER
         );
@@ -57,7 +57,7 @@ public class LocalMusicUtils {
             cursor = MusicApp.aCOntext.getContentResolver().query(
                     MediaStore.Audio.Media.INTERNAL_CONTENT_URI,
                     null,
-                    MediaStore.Audio.Media.DATA + "like ?",
+                    MediaStore.Audio.Media.DATA + " like ?",
                     new String[]{dirName + "%"},
                     MediaStore.Audio.Media.DEFAULT_SORT_ORDER
             );
@@ -71,7 +71,7 @@ public class LocalMusicUtils {
         cursor = MusicApp.aCOntext.getContentResolver().query(
                 MediaStore.Audio.Media.INTERNAL_CONTENT_URI,
                 null,
-                MediaStore.Audio.Media.DATA + "like ?",
+                MediaStore.Audio.Media.DATA + " like ?",
                 new String[]{dirName + "%"},
                 MediaStore.Audio.Media.DEFAULT_SORT_ORDER
 
