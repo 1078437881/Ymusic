@@ -1,10 +1,11 @@
-package com.yibo.ymusic;
+package com.yibo.ymusic.activity;
 
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.yibo.ymusic.R;
 import com.yibo.ymusic.fragment.MainFragment;
 import com.yibo.ymusic.fragment.SlideFragment;
 

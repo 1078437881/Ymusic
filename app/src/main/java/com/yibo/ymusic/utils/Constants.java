@@ -13,4 +13,6 @@ public class Constants {
     public static final String SP_NAME = "ymusic";//SharedPreferences文件名
     public static final String PLAY_POS = "playing_position";//播放位置
 
+    public static boolean ALL_GRANTED = false;
+
 }

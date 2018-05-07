@@ -49,7 +49,7 @@ public class PlayService extends Service implements MediaPlayer.OnCompletionList
     private SensorManager sensorManager;//传感器
     private MediaPlayer player;
     private OnMusicEventListener musicEventListener;
-    private int playingPisition;//当前播放位置
+    private int playingPisition = 0;//当前播放位置
     private PowerManager.WakeLock wakeLock = null;//获取设备电源锁,防止锁屏后服务停止
     private boolean isShaking;
     private Notification notification;//通知栏
@@ -77,10 +77,13 @@ public class PlayService extends Service implements MediaPlayer.OnCompletionList
     @Override
     public void onCreate() {
         super.onCreate();
+
+
         acquireWakeLock();//获取设备电源锁
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-        MusicUtils.intitMusicList();
+
+//        MusicUtils.intitMusicList();
         playingPisition = (Integer) SpUtils.get(this, Constants.PLAY_POS, 0);
 
         if (MusicUtils.musicArrayList.size() <= 0) {
@@ -150,13 +153,20 @@ public class PlayService extends Service implements MediaPlayer.OnCompletionList
 
             remoteViews.setImageViewBitmap(R.id.nf_picture,
                     icon == null ? ImageTools.scaleBitmap(R.drawable.ic_launcher_background) : ImageTools.scaleBitmap(icon));
+        }else{
+            remoteViews.setImageViewBitmap(R.id.nf_picture,ImageTools.scaleBitmap(R.mipmap.ic_launcher));
+//            remoteViews.setTextViewText(R.id.nf_title, "歌曲");
+//            remoteViews.setTextViewText(R.id.nf_artist, "歌手");
         }
-
+        remoteViews.setImageViewBitmap(R.id.nf_previous,ImageTools.scaleBitmap(R.drawable.ic_media_previous));
+        remoteViews.setImageViewBitmap(R.id.nf_next,ImageTools.scaleBitmap(R.drawable.ic_media_next));
+        remoteViews.setImageViewBitmap(R.id.nf_exit,ImageTools.scaleBitmap(R.drawable.ic_delete));
         if (isPlaying()) {
             remoteViews.setImageViewResource(R.id.nf_play, R.drawable.ic_media_pause);
         } else {
             remoteViews.setImageViewResource(R.id.nf_play, R.drawable.ic_media_play);
         }
+
 
         //通知栏更新
         notificationManager.notify(5, notification);
@@ -484,4 +494,5 @@ public class PlayService extends Service implements MediaPlayer.OnCompletionList
 
         public void onChange(int position);
     }
+
 }

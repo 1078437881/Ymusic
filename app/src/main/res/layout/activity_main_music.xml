@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yibo.ymusic.MainMusicActivity">
+    tools:context="com.yibo.ymusic.activity.MainMusicActivity">
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/main_drawer"

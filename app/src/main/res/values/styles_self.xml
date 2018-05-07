@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.MyBase" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.MyBase.transparent" parent="AppTheme.MyBase">
+        <item name="colorPrimary">@color/transparent</item><!--状态栏背景色-->
+        <item name="colorPrimaryDark">@color/transparent</item><!--标题栏背景色-->
+        <item name="colorAccent">@color/transparent</item><!--光标颜色-->
+    </style>
+
+</resources>
